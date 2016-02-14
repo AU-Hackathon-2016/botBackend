@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Bot server for hackathon",
   "main": "app.js",
-  "authro": "Simon Reimler",
-  "license": "MIT",
+  "authro": "Yangyang Liu",
+  "license": "AU",
   "dependencies": {
     "express": "^4.x.x",
     "body-parser": "^1.x.x",
