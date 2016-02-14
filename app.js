@@ -72,7 +72,11 @@ app.post('/show', function(req, res, next){
   targetID = originalText.substring(originalText.indexOf("show") + 4).trim();
 
   var botPayload = {
-    text : "Where do you want to grab personal information for " + targetID + " ?"
+    text : "Where do you want to grab personal information for " + targetID + " ?",
+    attachments: [{"pretext": "You can choose:", "color": "#36a64f", "text": "Facebook"},
+            {"color": "#36a64f", "text": "Twitter"},
+            {"color": "#415677", "text": "Craigslist"}
+            ]
   };
 
   if (userName != 'slackbot'){
@@ -83,43 +87,59 @@ app.post('/show', function(req, res, next){
   };
 });
 
-/*
 app.post('/select', function(req, res, next){
   var userName = req.body.user_name;
   var originalText = req.body.text;
   var targetWeb = originalText.substring(originalText.indexOf("select") + 6).trim();
 
-  $.ajax({
-    // Python server url
-    url: "http://query.yahooapis.com/v1/public/yql",
+  var targetFile = null;
 
-    // The name of the callback parameter, as specified by the YQL service
-    jsonp: "callback",
-
-    // Tell jQuery we're expecting JSONP
-    dataType: "jsonp",
-
-    // Tell YQL what we want and that we want JSON
-    data: {
-        userName: targetID,
-        website: targetWeb
-    },
-
-    // Work with the response
-    success: function( response ) {
-      botPayload = {
-      "text" = response;
+  switch (targetWeb){
+    case "twitter": targetFile = "twitter.txt"; break;
+    case "facebook":
+      if (targetID=="brandon"){
+        targetFile = "facebookB.txt";
       }
-      if (userName != 'slackbot'){
-        return res.status(200).json(botPayload);
+      else {
+        targetFile = "facebookY.txt";
       }
-      else{
-        return res.status(200).end();
-      }
-    }
-  });
+      break;
+    case "craigslist": targetFile = "craigslist.txt"; break;
+    default: break;
+  }
+
+  var json = JSON.parse(require('fs').readFileSync('data/' + targetFile, 'utf8'));
+
+  var botPayload = {
+    //text : "I am presenting personal data for " + targetID + " now!"
+
+    attachments: json
+  };
+
+  if (userName != 'slackbot'){
+    return res.status(200).json(botPayload);
+  }
+  else{
+    return res.status(200).end();
+  };
+
 });
-*/
+
+
+  /*
+  function callback(json) {
+    botPayload = {
+      "text": json
+    }
+    if (userName != 'slackbot'){
+      return res.status(200).json(botPayload);
+    }
+    else{
+      return res.status(200).end();
+    }
+  }
+  */
+
 /*
 var botPayload = {
   "attachments": [
