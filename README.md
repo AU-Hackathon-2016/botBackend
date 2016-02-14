@@ -30,7 +30,7 @@ We build this with a nice team. All teammates have their tasks and cooperate tog
 
 2. #### Structure:
    The total structure can be seen in the following picture:
-   ![image of Structure](https://github.com/AU-Hackathon-2016/botBackend/blob/master/image/structure.png = 100*20)
+   [Structure image](./image/structure.png)
 
 3. #### Deployment:
    All web response for communications are allocated in app.js file, which is demonstrated in Procfile. When deploy everything on Heroku, the heroku will read Procfile to find the entry for this web server and keep running. A evert listener is defined inside app.js file, then respond a coresponding webpage.
