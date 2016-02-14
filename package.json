@@ -1,7 +1,7 @@
 {
   "name": "devdacticBot",
   "version": "0.0.1",
-  "description": "Simple testing Node server",
+  "description": "Bot server for hackathon",
   "main": "app.js",
   "authro": "Simon Reimler",
   "license": "MIT",
