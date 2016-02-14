@@ -1,13 +1,13 @@
 {
   "name": "devdacticBot",
   "version": "0.0.1",
-  "description": "Simple testing Node server",
+  "description": "Bot server for hackathon",
   "main": "app.js",
-  "authro": "Simon Reimler",
-  "license": "MIT",
+  "authro": "Yangyang Liu",
+  "license": "AU",
   "dependencies": {
-    "body-parser": "^1.x.x",
     "express": "^4.x.x",
+    "body-parser": "^1.x.x",
     "http": "0.0.0",
     "request": "2.56.x"
   }
